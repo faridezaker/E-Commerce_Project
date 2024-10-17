@@ -1,14 +1,14 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\ConfirmablePasswordController;
-use App\Http\Controllers\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\Auth\EmailVerificationPromptController;
-use App\Http\Controllers\Auth\NewPasswordController;
-use App\Http\Controllers\Auth\PasswordController;
-use App\Http\Controllers\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Auth\VerifyEmailController;
+use Zaker\User\Http\Controllers\Auth\AuthenticatedSessionController;
+use Zaker\User\Http\Controllers\Auth\ConfirmablePasswordController;
+use Zaker\User\Http\Controllers\Auth\EmailVerificationNotificationController;
+use Zaker\User\Http\Controllers\Auth\EmailVerificationPromptController;
+use Zaker\User\Http\Controllers\Auth\NewPasswordController;
+use Zaker\User\Http\Controllers\Auth\PasswordController;
+use Zaker\User\Http\Controllers\Auth\PasswordResetLinkController;
+use Zaker\User\Http\Controllers\Auth\RegisteredUserController;
+use Zaker\User\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
