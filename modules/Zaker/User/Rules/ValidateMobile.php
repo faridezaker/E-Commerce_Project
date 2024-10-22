@@ -2,20 +2,27 @@
 
 namespace Zaker\User\Rules;
 
-use Closure;
-use Illuminate\Contracts\Validation\ValidationRule;
+use Illuminate\Contracts\Validation\Rule;
 
-class ValidateMobile implements ValidationRule
+class    ValidateMobile implements Rule
 {
     /**
-     * Run the validation rule.
      *
-     * @param  \Closure(string): \Illuminate\Translation\PotentiallyTranslatedString  $fail
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
      */
-    public function validate(string $attribute, mixed $value, Closure $fail): void
+    public function passes($attribute, $value)
     {
-        if (!preg_match("/^9[0-9]{9}$/", $value)) {
-            $fail('The mobile number format is not correct, for example 9367788755');
-        }
+        return (bool) preg_match("/^9[0-9]{9}$/", $value);
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function message()
+    {
+        return 'The mobile number format is not correct, for example 9367788755';
     }
 }

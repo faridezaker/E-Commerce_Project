@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use Zaker\User\Models\User;
+use Zaker\User\Notifications\VerifyEmail;
+use Zaker\User\Notifications\VerifyEmailNotification;
 use Zaker\User\Rules\ValidateMobile;
 
 class RegisteredUserController extends Controller
@@ -34,7 +36,7 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'mobile' => ['nullable', 'string', 'max:14',new ValidateMobile()],
+            'mobile' => ['nullable', 'string','min:9','max:14',new ValidateMobile()],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -50,5 +52,9 @@ class RegisteredUserController extends Controller
         Auth::login($user);
         return redirect()->route('verification.notice');
         //return redirect(RouteServiceProvider::HOME);
+    }
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new VerifyEmailNotification());
     }
 }

@@ -16,6 +16,7 @@ class UserServiceProvider extends ServiceProvider
     {
         $this->loadRoutesFrom(__DIR__.'/../Routes/user_routes.php');
         $this->loadMigrationsFrom(__DIR__.'/../Databases/Migrations');
+        $this->loadFactoriesFrom(__DIR__.'/../Databases/factories');
         $this->loadViewsFrom(__DIR__ . '/../Resources/Views/','User');
     }
 }

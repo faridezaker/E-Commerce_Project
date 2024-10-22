@@ -17,3 +17,6 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/test', function () {
+    return New \Zaker\User\Mail\VerifyCodeMail();
+});
